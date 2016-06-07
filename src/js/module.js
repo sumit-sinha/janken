@@ -172,7 +172,7 @@ export default function game(args) {
 	 *		expected key is "buttons"
 	 */
 	var setButtonListerners = function(config) {
-		if (config == null || config.buttons == null) {
+		if (config == null || config.buttons == null || (config.player && config.player.name === "||computer||")) {
 			return;
 		}
 
@@ -194,7 +194,8 @@ export default function game(args) {
 		args.overlay.container.className = "overlay";
 		clock.reset();
 
-		
+		args.player.dom.playerSelection1.className = "selected waiting";
+		args.player.dom.playerSelection2.className = "selected waiting";
 	};
 
 	return {
