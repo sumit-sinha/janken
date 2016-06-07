@@ -190,7 +190,7 @@ export default function game(args) {
 	 * function to reset global variables
 	 */
 	var resetVariables = function() {
-		playerOneResponse - null;
+		playerOneResponse = null;
 		args.overlay.container.className = "overlay";
 		clock.reset();
 
