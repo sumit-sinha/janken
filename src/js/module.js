@@ -20,7 +20,7 @@ export default function game(args) {
 	var isFirstPlayerAComputer = false;
 	var computerPlayers = ["Sam", "Bob", "Martha"];
 
-	var images_array = ["cloud", "description", "content_cut"];
+	var class_array = ["rock", "paper", "scissor"];
 	
 	/**
 	 * randomly select computer option out of rock paper and scissor
@@ -77,10 +77,10 @@ export default function game(args) {
 			}
 
 			// update UI
-			config.player.dom.playerSelection1.innerHTML = images_array[playerOneResponse  - 1];
-			config.player.dom.playerSelection2.innerHTML = images_array[playerTwoResponse  - 1];
+			config.player.dom.playerSelection1.className = "selected " + class_array[playerOneResponse  - 1];
+			config.player.dom.playerSelection2.className = "selected " + class_array[playerTwoResponse  - 1];
 
-			if (images_array[playerOneResponse  - 1] == null || images_array[playerTwoResponse  - 1] == null) {
+			if (class_array[playerOneResponse  - 1] == null || class_array[playerTwoResponse  - 1] == null) {
 				console.log("Unexpected exception. Unable to generate selection for computer player. playerOneResponse: " 
 					+ playerOneResponse + " and playerTwoResponse: " + playerTwoResponse);
 			}
@@ -163,7 +163,7 @@ export default function game(args) {
 	 */
 	var onButtonClick = function(event) {
 		playerOneResponse = Number(event.target.getAttribute("data-value"));
-		args.player.dom.playerSelection1.innerHTML = images_array[Number(event.target.getAttribute("data-value")) - 1];
+		args.player.dom.playerSelection1.className = "selected " + class_array[Number(event.target.getAttribute("data-value")) - 1];
 	};
 
 	/**
@@ -178,10 +178,10 @@ export default function game(args) {
 
 		for (var i = 0; i < config.buttons.length; i++) {
 
-			if (config.buttons[i].dom.attachEvent) {
-				config.buttons[i].dom.attachEvent("onclick", function(event) {onButtonClick(event)});
-			} else if (config.buttons[i].dom.addEventListener) {
+			if (config.buttons[i].dom.addEventListener) {
 				config.buttons[i].dom.addEventListener("click", function(event) {onButtonClick(event)});
+			} else if (config.buttons[i].dom.attachEvent) {
+				config.buttons[i].dom.attachEvent("onclick", function(event) {onButtonClick(event)});
 			}
 		}
 	};

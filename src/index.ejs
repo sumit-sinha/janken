@@ -5,7 +5,6 @@
 		<meta charset="UTF-8">
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	</head>
 	<body>
 		<nav class="light-blue lighten-1" role="navigation">
@@ -17,16 +16,13 @@
 		<div class="container">
 			<div class="janken-options">
 				<div class="rock janken-option" id="rock" data-value="1">
-					<i class="material-icons" data-value="1">cloud</i>
-					<div class="janken-label" data-value="1">Rock</div>
+					<div class="janken-label" data-value="1">&nbsp;</div>
 				</div>
 				<div class="paper janken-option" id="paper" data-value="2">
-					<i class="material-icons" data-value="2">description</i>
-					<div class="janken-label" data-value="2">Paper</div>
+					<div class="janken-label" data-value="2">&nbsp;</div>
 				</div>
 				<div class="scissor janken-option" id="scissor" data-value="3">
-					<i class="material-icons" data-value="3">content_cut</i>
-					<div class="janken-label" data-value="3">Scissor</div>
+					<div class="janken-label" data-value="3">&nbsp;</div>
 				</div>
 			</div>
 			<div class="janken area">
@@ -42,18 +38,14 @@
 			</div>
 			<div class="selection area">
 				<div class="side selection-1">
-					<div class="selected">
-						<i class="material-icons" id="player-1-selection">alarm</i>
-					</div>
+					<div class="selected waiting" id="player-1-selection">&nbsp;</div>
 				</div>
 				<div class="side middle-panel">
 					<div class="time-box">0</div>
 					
 				</div>
 				<div class="side selection-2">
-					<div class="selected">
-						<i class="material-icons" id="player-2-selection">alarm</i>
-					</div>
+					<div class="selected waiting" id="player-2-selection">&nbsp;</div>
 				</div>
 			</div>
 			<div class="scoreline area">
@@ -62,9 +54,9 @@
 					<div class="side">&nbsp;</div>
 					<div class="side">&nbsp;</div>
 				</div>
-				<div class="side score score-1"></div>
+				<div class="side score score-1">0</div>
 				<div class="side middle-panel">&nbsp;</div>
-				<div class="side score score-2"></div>
+				<div class="side score score-2">0</div>
 			</div>
 		</div>
 
@@ -74,7 +66,7 @@
 					<label>Welcome to the game of Rock, Paper and Scisscor. How would you like to play?</label>
 				</div>
 				<button class="waves-effect waves-light btn" onclick="startNewGame({})">Computer vs Computer</button>
-				<button class="waves-effect waves-light btn" onclick="startNewGame({player: 'Player 1'})">Human vs Computer</button>
+				<button class="waves-effect waves-light btn" onclick="startNewGame({player: 'Player 1'})">You vs Computer</button>
 			</div>
 		</div>
 
