@@ -1,0 +1,90 @@
+@charset "UTF-8";
+
+@import "arena/main";
+@import "navbar/main";
+@import "mobile/main";
+
+body {
+	margin: 0;
+}
+
+.container {
+	width: 90%;
+	margin: 0 auto;
+}
+
+button {
+	border: none;
+    border-radius: 2px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    outline: 0;
+    padding: 0 2rem;
+    text-transform: uppercase;
+    vertical-align: middle;
+    -webkit-tap-highlight-color: transparent;
+    cursor: pointer;
+}
+
+@media only screen and (min-width: 601px) {
+	.container {
+		width: 85%;
+	}
+}
+
+@media only screen and (min-width: 993px) {
+	.container {
+		width: 70%;
+	}
+}
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(13, 22, 70, 0.56);
+	color: white;
+	display: none;
+
+	&.show {
+		display: block;
+	}
+
+	.message {
+		font-size: 1.5em;
+		padding-bottom: 10px;
+	}
+}
+
+.land-screen {
+    position: fixed;
+    z-index: 10;
+    color: white;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(13, 22, 70, 0.96);
+
+    button {
+    	height: 100px;
+    	margin-top: 20px;
+		width: 244px;
+    }
+
+    .screen-message {
+		font-size: 1.2em;
+		padding: 15px;
+    }
+}
+
+.overlay .container,  .land-screen .container{
+	position: fixed;
+	top: 40%;
+	margin: 0 auto;
+	width: 100%;
+	text-align: center;
+}

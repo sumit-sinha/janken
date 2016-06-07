@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Rock - Paper - Scissors</title>
+		<meta charset="UTF-8">
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	</head>
+	<body>
+		<nav class="light-blue lighten-1" role="navigation">
+			<div class="nav-wrapper container">
+				<a id="logo-container" href="https://www.tofugu.com/japan/japanese-rock-paper-scissors/" target="_blank" class="brand-logo">Janken</a>
+			</div>
+		</nav>
+
+		<div class="container">
+			<div class="janken-options">
+				<div class="rock janken-option" id="rock" data-value="1">
+					<i class="material-icons" data-value="1">cloud</i>
+					<div class="janken-label" data-value="1">Rock</div>
+				</div>
+				<div class="paper janken-option" id="paper" data-value="2">
+					<i class="material-icons" data-value="2">description</i>
+					<div class="janken-label" data-value="2">Paper</div>
+				</div>
+				<div class="scissor janken-option" id="scissor" data-value="3">
+					<i class="material-icons" data-value="3">content_cut</i>
+					<div class="janken-label" data-value="3">Scissor</div>
+				</div>
+			</div>
+			<div class="janken area">
+				<div class="player-area">
+					<div class="side player-1">You</div>
+					<div class="side middle-panel">
+						<div class="message">
+							<span>vs</span>
+						</div>
+					</div>
+					<div class="side player-2">Computer</div>
+				</div>
+			</div>
+			<div class="selection area">
+				<div class="side selection-1">
+					<div class="selected">
+						<i class="material-icons" id="player-1-selection">alarm</i>
+					</div>
+				</div>
+				<div class="side middle-panel">
+					<div class="time-box">0</div>
+					
+				</div>
+				<div class="side selection-2">
+					<div class="selected">
+						<i class="material-icons" id="player-2-selection">alarm</i>
+					</div>
+				</div>
+			</div>
+			<div class="scoreline area">
+				<div class="label">
+					<div class="side">Score:</div>
+					<div class="side">&nbsp;</div>
+					<div class="side">&nbsp;</div>
+				</div>
+				<div class="side score score-1"></div>
+				<div class="side middle-panel">&nbsp;</div>
+				<div class="side score score-2"></div>
+			</div>
+		</div>
+
+		<div class="land-screen">
+			<div class="container">
+				<div class="screen-message">
+					<label>Welcome to the game of Rock, Paper and Scisscor. How would you like to play?</label>
+				</div>
+				<button class="waves-effect waves-light btn" onclick="startNewGame({})">Computer vs Computer</button>
+				<button class="waves-effect waves-light btn" onclick="startNewGame({player: 'Player 1'})">Human vs Computer</button>
+			</div>
+		</div>
+
+		<div class="overlay">
+			<div class="container">
+				<div class="message" id="success-message">Soemthing happened</div>
+				<div class="match-options">
+					<button class="waves-effect waves-light btn" onclick="restartMatch()">Re-Match</button>
+					<button class="waves-effect waves-light btn" onclick="continueGame()">Continue</button>
+				</div>
+			</div>
+		</div>
+
+
+	</body>
+</html>

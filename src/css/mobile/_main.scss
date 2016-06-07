@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+@media only screen and (max-width: 600px) {
+
+	.selection.area i.material-icons {
+	    font-size: 7em;
+	}
+
+	.selection .side.middle-panel {
+		top: -40px;
+	}
+}

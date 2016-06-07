@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+.janken-options {
+	
+	width: 90%;
+    margin: 0 auto;
+
+    .janken-option {
+		margin-top: 1.5em;
+		cursor: pointer;
+		padding: 5px;
+		text-align: center;
+		box-shadow: 0 2px 5px 0 rgba(13, 22, 70, 0.16), 0 2px 10px 0 rgba(23, 34, 95, 0.12);
+		background-color: #D6D6D6;
+		color: #000000;
+		display: inline-block;
+	    width: 28%;
+
+		&:hover {
+			background-color: #00618E;
+    		color: #FFFFFF;
+		}
+
+		&.finalized {
+			background-color: #287100;
+			color: white;
+		}
+
+		.material-icons {
+			font-size: 2.5em;
+		}
+	}
+}
+
+.area {padding-top: 2em;}
+
+.side {
+    display: inline-block;
+    width: 39%;
+    text-align: center;
+}
+.side.middle-panel {
+	width: 18%;
+}
+
+.selection.area i.material-icons {
+    font-size: 9em;
+}
+.selected {
+	text-align: center;	
+}
+.selection .side.middle-panel {
+    font-size: 3em;
+    top: -50px;
+    position: relative;
+}
+span.result {
+    font-weight: bold;
+}
+
+span.result.win {
+    color: green;
+}
+
+span.result.lose {
+    color: red;
+}
+.scoreline .score {
+	font-size: 2em;
+	color: #12085D;
+}
