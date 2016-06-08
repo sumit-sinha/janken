@@ -28,7 +28,7 @@ export default function timer(args) {
 
 		window.clearInterval(interval);
 
-		if (typeof args.onIntervalOver.fn === "function") {
+		if (args.onIntervalOver && typeof args.onIntervalOver.fn === "function") {
 
 			if (args.onIntervalOver.args == null) {
 				args.onIntervalOver.args = {};

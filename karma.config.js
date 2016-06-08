@@ -18,7 +18,7 @@ module.exports = function (config) {
 
 		// frameworks to use
 		// available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-		frameworks: ['mocha', 'chai'],
+		frameworks: ['mocha', 'chai', 'sinon'],
 
 		// list of files / patterns to load in the browser
 		files: ['test/webpack.bundle.js', 'build/*.js'],
@@ -72,6 +72,20 @@ module.exports = function (config) {
 		concurrency: Infinity,
 
 		captureTimeout: 8500,
-		reportSlowerThan: 500
+		reportSlowerThan: 500,
+
+		plugins: [
+			'karma-sinon',
+			'karma-chai',
+	        'karma-mocha',
+	        'karma-sinon',
+	        'karma-mocha-reporter',
+	        'karma-chrome-launcher',
+	        'karma-firefox-launcher',
+	        'karma-ie-launcher',
+	        'karma-safari-launcher',
+	        'karma-sourcemap-loader',
+	        'karma-webpack'
+		]
 	});
 };
