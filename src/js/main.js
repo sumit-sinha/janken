@@ -1,6 +1,6 @@
-require('../css/main.scss');
-
 import game from './module';
+
+require('../css/main.scss');
 
 (function() {
 

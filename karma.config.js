@@ -21,7 +21,7 @@ module.exports = function (config) {
 		frameworks: ['mocha', 'chai'],
 
 		// list of files / patterns to load in the browser
-		files: ['test/webpack.bundle.js'],
+		files: ['test/webpack.bundle.js', 'build/*.js'],
 
 
 		// preprocess matching files before serving them to the browser
