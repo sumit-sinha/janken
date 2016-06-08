@@ -19,8 +19,10 @@ describe('test suite for game module', function() {
 	var rockButtonEl = null;
 	var scissorButtonEl = null;
 
-	beforeEach(function() {
-		
+	/**
+	 * function to create DOM for game
+	 */
+	var prepareDOM = function() {
 		clockEl = document.createElement("div");
 		document.body.appendChild(clockEl);
 
@@ -60,16 +62,16 @@ describe('test suite for game module', function() {
 		scissorButtonEl = document.createElement("button");
 		scissorButtonEl.setAttribute("data-value", "3");
 		document.body.appendChild(scissorButtonEl);
+	};
 
-		sinonClock = sinon.useFakeTimers();
-
-	});
-
-	it('should set proper name for player', function() {
-		
+	/**
+	 * function to initialze game
+	 * @param playerName name of player as configuration parameter
+	 */
+	var createGame = function(playerName) {
 		janken = game({
 			player: {
-				name: "Somename",
+				name: playerName,
 				dom: {
 					player1: playerOneNameEl,
 					player2: playerTwoNameEl,
@@ -100,6 +102,18 @@ describe('test suite for game module', function() {
 				dom: scissorButtonEl
 			}]
 		});
+	};
+
+	beforeEach(function() {
+		
+		prepareDOM();
+		sinonClock = sinon.useFakeTimers();
+
+	});
+
+	it('should set proper name for player', function() {
+		
+		createGame("Somename");
 
 		janken.start();
 
@@ -109,39 +123,7 @@ describe('test suite for game module', function() {
 
 	it('should select a random computer player if computer vs computer game', function() {
 		
-		janken = game({
-			player: {
-				name: "||computer||",
-				dom: {
-					player1: playerOneNameEl,
-					player2: playerTwoNameEl,
-					playerSelection1: playerSelectionOneEl,
-					playerSelection2: playerSelectionTwoEl
-				}
-			},
-			timer: {
-				maxCount: 10,
-				element: clockEl
-			},
-			overlay: {
-				container: overlayEl,
-				message: overlayMessageEl
-			},
-			scoreline: {
-				score1: scoreOneEl,
-				score2: scoreTwoEl
-			},
-			buttons: [{
-				value: 1,
-				dom: rockButtonEl
-			}, {
-				value: 2,
-				dom: paperButtonEl
-			}, {
-				value: 2,
-				dom: scissorButtonEl
-			}]
-		});
+		createGame("||computer||");
 
 		janken.start();
 
@@ -150,39 +132,7 @@ describe('test suite for game module', function() {
 
 	it('should start the timer indicating the start of game', function() {
 		
-		janken = game({
-			player: {
-				name: "Somename",
-				dom: {
-					player1: playerOneNameEl,
-					player2: playerTwoNameEl,
-					playerSelection1: playerSelectionOneEl,
-					playerSelection2: playerSelectionTwoEl
-				}
-			},
-			timer: {
-				maxCount: 10,
-				element: clockEl
-			},
-			overlay: {
-				container: overlayEl,
-				message: overlayMessageEl
-			},
-			scoreline: {
-				score1: scoreOneEl,
-				score2: scoreTwoEl
-			},
-			buttons: [{
-				value: 1,
-				dom: rockButtonEl
-			}, {
-				value: 2,
-				dom: paperButtonEl
-			}, {
-				value: 2,
-				dom: scissorButtonEl
-			}]
-		});
+		createGame("Somename");
 
 		janken.start();
 
@@ -195,39 +145,7 @@ describe('test suite for game module', function() {
 
 	it('should attach listeners for each of the buttons i.e. button for rock, paper and scissors if not a computer player', function() {
 		
-		janken = game({
-			player: {
-				name: "Somename",
-				dom: {
-					player1: playerOneNameEl,
-					player2: playerTwoNameEl,
-					playerSelection1: playerSelectionOneEl,
-					playerSelection2: playerSelectionTwoEl
-				}
-			},
-			timer: {
-				maxCount: 10,
-				element: clockEl
-			},
-			overlay: {
-				container: overlayEl,
-				message: overlayMessageEl
-			},
-			scoreline: {
-				score1: scoreOneEl,
-				score2: scoreTwoEl
-			},
-			buttons: [{
-				value: 1,
-				dom: rockButtonEl
-			}, {
-				value: 2,
-				dom: paperButtonEl
-			}, {
-				value: 2,
-				dom: scissorButtonEl
-			}]
-		});
+		createGame("Somename");
 
 		janken.start();
 
@@ -246,39 +164,7 @@ describe('test suite for game module', function() {
 
 	it('should not attach listeners for each of the buttons for a computer player', function() {
 		
-		janken = game({
-			player: {
-				name: "||computer||",
-				dom: {
-					player1: playerOneNameEl,
-					player2: playerTwoNameEl,
-					playerSelection1: playerSelectionOneEl,
-					playerSelection2: playerSelectionTwoEl
-				}
-			},
-			timer: {
-				maxCount: 10,
-				element: clockEl
-			},
-			overlay: {
-				container: overlayEl,
-				message: overlayMessageEl
-			},
-			scoreline: {
-				score1: scoreOneEl,
-				score2: scoreTwoEl
-			},
-			buttons: [{
-				value: 1,
-				dom: rockButtonEl
-			}, {
-				value: 2,
-				dom: paperButtonEl
-			}, {
-				value: 2,
-				dom: scissorButtonEl
-			}]
-		});
+		createGame("||computer||");
 
 		janken.start();
 
@@ -297,39 +183,7 @@ describe('test suite for game module', function() {
 
 	it('should show message about game result once match is over', function() {
 		
-		janken = game({
-			player: {
-				name: "||computer||",
-				dom: {
-					player1: playerOneNameEl,
-					player2: playerTwoNameEl,
-					playerSelection1: playerSelectionOneEl,
-					playerSelection2: playerSelectionTwoEl
-				}
-			},
-			timer: {
-				maxCount: 10,
-				element: clockEl
-			},
-			overlay: {
-				container: overlayEl,
-				message: overlayMessageEl
-			},
-			scoreline: {
-				score1: scoreOneEl,
-				score2: scoreTwoEl
-			},
-			buttons: [{
-				value: 1,
-				dom: rockButtonEl
-			}, {
-				value: 2,
-				dom: paperButtonEl
-			}, {
-				value: 2,
-				dom: scissorButtonEl
-			}]
-		});
+		createGame("||computer||");
 
 		janken.start();
 
@@ -347,39 +201,7 @@ describe('test suite for game module', function() {
 		// a random response can be undefined also which is fully accepted
 		// this means that computer player didn't selected anything
 
-		janken = game({
-			player: {
-				name: "||computer||",
-				dom: {
-					player1: playerOneNameEl,
-					player2: playerTwoNameEl,
-					playerSelection1: playerSelectionOneEl,
-					playerSelection2: playerSelectionTwoEl
-				}
-			},
-			timer: {
-				maxCount: 10,
-				element: clockEl
-			},
-			overlay: {
-				container: overlayEl,
-				message: overlayMessageEl
-			},
-			scoreline: {
-				score1: scoreOneEl,
-				score2: scoreTwoEl
-			},
-			buttons: [{
-				value: 1,
-				dom: rockButtonEl
-			}, {
-				value: 2,
-				dom: paperButtonEl
-			}, {
-				value: 2,
-				dom: scissorButtonEl
-			}]
-		});
+		createGame("||computer||");
 
 		janken.start();
 
@@ -390,39 +212,7 @@ describe('test suite for game module', function() {
 
 	it('should update the scoreline once the match is over', function() {
 
-		janken = game({
-			player: {
-				name: "||computer||",
-				dom: {
-					player1: playerOneNameEl,
-					player2: playerTwoNameEl,
-					playerSelection1: playerSelectionOneEl,
-					playerSelection2: playerSelectionTwoEl
-				}
-			},
-			timer: {
-				maxCount: 10,
-				element: clockEl
-			},
-			overlay: {
-				container: overlayEl,
-				message: overlayMessageEl
-			},
-			scoreline: {
-				score1: scoreOneEl,
-				score2: scoreTwoEl
-			},
-			buttons: [{
-				value: 1,
-				dom: rockButtonEl
-			}, {
-				value: 2,
-				dom: paperButtonEl
-			}, {
-				value: 2,
-				dom: scissorButtonEl
-			}]
-		});
+		createGame("||computer||");
 
 		janken.start();
 
@@ -435,39 +225,7 @@ describe('test suite for game module', function() {
 
 	it('should remove the overlay once user click on continue match', function() {
 
-		janken = game({
-			player: {
-				name: "||computer||",
-				dom: {
-					player1: playerOneNameEl,
-					player2: playerTwoNameEl,
-					playerSelection1: playerSelectionOneEl,
-					playerSelection2: playerSelectionTwoEl
-				}
-			},
-			timer: {
-				maxCount: 10,
-				element: clockEl
-			},
-			overlay: {
-				container: overlayEl,
-				message: overlayMessageEl
-			},
-			scoreline: {
-				score1: scoreOneEl,
-				score2: scoreTwoEl
-			},
-			buttons: [{
-				value: 1,
-				dom: rockButtonEl
-			}, {
-				value: 2,
-				dom: paperButtonEl
-			}, {
-				value: 2,
-				dom: scissorButtonEl
-			}]
-		});
+		createGame("||computer||");
 
 		janken.start();
 
@@ -482,39 +240,7 @@ describe('test suite for game module', function() {
 
 	it('should update the player selection area once user clicks on continue', function() {
 
-		janken = game({
-			player: {
-				name: "Someone",
-				dom: {
-					player1: playerOneNameEl,
-					player2: playerTwoNameEl,
-					playerSelection1: playerSelectionOneEl,
-					playerSelection2: playerSelectionTwoEl
-				}
-			},
-			timer: {
-				maxCount: 10,
-				element: clockEl
-			},
-			overlay: {
-				container: overlayEl,
-				message: overlayMessageEl
-			},
-			scoreline: {
-				score1: scoreOneEl,
-				score2: scoreTwoEl
-			},
-			buttons: [{
-				value: 1,
-				dom: rockButtonEl
-			}, {
-				value: 2,
-				dom: paperButtonEl
-			}, {
-				value: 2,
-				dom: scissorButtonEl
-			}]
-		});
+		createGame("Somename");
 
 		janken.start();
 
@@ -533,39 +259,7 @@ describe('test suite for game module', function() {
 
 	it('should reset the clock once user clicks on continue', function() {
 
-		janken = game({
-			player: {
-				name: "Someone",
-				dom: {
-					player1: playerOneNameEl,
-					player2: playerTwoNameEl,
-					playerSelection1: playerSelectionOneEl,
-					playerSelection2: playerSelectionTwoEl
-				}
-			},
-			timer: {
-				maxCount: 10,
-				element: clockEl
-			},
-			overlay: {
-				container: overlayEl,
-				message: overlayMessageEl
-			},
-			scoreline: {
-				score1: scoreOneEl,
-				score2: scoreTwoEl
-			},
-			buttons: [{
-				value: 1,
-				dom: rockButtonEl
-			}, {
-				value: 2,
-				dom: paperButtonEl
-			}, {
-				value: 2,
-				dom: scissorButtonEl
-			}]
-		});
+		createGame("Somename");
 
 		janken.start();
 
@@ -586,39 +280,7 @@ describe('test suite for game module', function() {
 
 	it('should reset the score if user clicks on restart match', function() {
 
-		janken = game({
-			player: {
-				name: "Someone",
-				dom: {
-					player1: playerOneNameEl,
-					player2: playerTwoNameEl,
-					playerSelection1: playerSelectionOneEl,
-					playerSelection2: playerSelectionTwoEl
-				}
-			},
-			timer: {
-				maxCount: 10,
-				element: clockEl
-			},
-			overlay: {
-				container: overlayEl,
-				message: overlayMessageEl
-			},
-			scoreline: {
-				score1: scoreOneEl,
-				score2: scoreTwoEl
-			},
-			buttons: [{
-				value: 1,
-				dom: rockButtonEl
-			}, {
-				value: 2,
-				dom: paperButtonEl
-			}, {
-				value: 2,
-				dom: scissorButtonEl
-			}]
-		});
+		createGame("Somename");
 
 		janken.start();
 
@@ -632,39 +294,7 @@ describe('test suite for game module', function() {
 
 	it('should remove the overlay once user click on restart match', function() {
 
-		janken = game({
-			player: {
-				name: "||computer||",
-				dom: {
-					player1: playerOneNameEl,
-					player2: playerTwoNameEl,
-					playerSelection1: playerSelectionOneEl,
-					playerSelection2: playerSelectionTwoEl
-				}
-			},
-			timer: {
-				maxCount: 10,
-				element: clockEl
-			},
-			overlay: {
-				container: overlayEl,
-				message: overlayMessageEl
-			},
-			scoreline: {
-				score1: scoreOneEl,
-				score2: scoreTwoEl
-			},
-			buttons: [{
-				value: 1,
-				dom: rockButtonEl
-			}, {
-				value: 2,
-				dom: paperButtonEl
-			}, {
-				value: 2,
-				dom: scissorButtonEl
-			}]
-		});
+		createGame("||computer||");
 
 		janken.start();
 
@@ -679,39 +309,7 @@ describe('test suite for game module', function() {
 
 	it('should update the player selection area once user clicks on restart', function() {
 
-		janken = game({
-			player: {
-				name: "Someone",
-				dom: {
-					player1: playerOneNameEl,
-					player2: playerTwoNameEl,
-					playerSelection1: playerSelectionOneEl,
-					playerSelection2: playerSelectionTwoEl
-				}
-			},
-			timer: {
-				maxCount: 10,
-				element: clockEl
-			},
-			overlay: {
-				container: overlayEl,
-				message: overlayMessageEl
-			},
-			scoreline: {
-				score1: scoreOneEl,
-				score2: scoreTwoEl
-			},
-			buttons: [{
-				value: 1,
-				dom: rockButtonEl
-			}, {
-				value: 2,
-				dom: paperButtonEl
-			}, {
-				value: 2,
-				dom: scissorButtonEl
-			}]
-		});
+		createGame("Somename");
 
 		janken.start();
 
@@ -730,39 +328,7 @@ describe('test suite for game module', function() {
 
 	it('should reset the clock once user clicks on restart', function() {
 
-		janken = game({
-			player: {
-				name: "Someone",
-				dom: {
-					player1: playerOneNameEl,
-					player2: playerTwoNameEl,
-					playerSelection1: playerSelectionOneEl,
-					playerSelection2: playerSelectionTwoEl
-				}
-			},
-			timer: {
-				maxCount: 10,
-				element: clockEl
-			},
-			overlay: {
-				container: overlayEl,
-				message: overlayMessageEl
-			},
-			scoreline: {
-				score1: scoreOneEl,
-				score2: scoreTwoEl
-			},
-			buttons: [{
-				value: 1,
-				dom: rockButtonEl
-			}, {
-				value: 2,
-				dom: paperButtonEl
-			}, {
-				value: 2,
-				dom: scissorButtonEl
-			}]
-		});
+		createGame("Somename");
 
 		janken.start();
 
